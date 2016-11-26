@@ -19,8 +19,10 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit(): void {
     // Convert the 'keyup' event into an observable stream
+    console.log('Native element ', this.el.nativeElement);
+
     Observable.fromEvent(this.el.nativeElement, 'keyup')
-      .map((e:any) => e.target.value) // extract the value of the input
+      .map((e:any) => e.target.value ) // extract the value of the input
       .filter((text:string) => text.length > 1) // filter out if empty
       .debounceTime(250) // only once every 250ms
       .do(() => this.loading.next(true)) // enable loading
