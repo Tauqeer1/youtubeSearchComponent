@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <div>
+    <h1>Youtube Search</h1>
+    <img *ngIf="loading" src=`${loadingGif}`>
+    <div>
+      <div>
+        <search-box (loading)="loading = $event"
+                    (results)="updateResults($event)"></search-box>
+      </div>
+    </div>
+
+    <div>
+      <search-result *ngFor="let result of results" [result]="result"></search-result>
+    </div>
+  </div>
+</div>
